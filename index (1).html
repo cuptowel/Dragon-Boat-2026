@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ET Dragon — Stanley 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Inter:wght@400;500;600&family=Roboto+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --teal:    #0D4A4A;
+      --teal2:   #0F5C5C;
+      --gold:    #C8991A;
+      --gold2:   #E8B830;
+      --cream:   #F5F0E8;
+      --white:   #FFFFFF;
+      --mist:    #D8E8E8;
+      --gray:    #7A9090;
+      --red:     #C8311A;
+      --card:    #0A3535;
+      --border:  rgba(200,153,26,0.28);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--teal);
+      color: var(--cream);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 2rem; height: 58px;
+      background: rgba(10,40,40,0.97);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 0.6rem;
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.1rem; font-weight: 700;
+      letter-spacing: 0.1em; color: var(--gold2);
+      text-decoration: none;
+    }
+    .nav-logo .sub { color: rgba(255,255,255,0.55); font-weight: 400; font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; }
+    .nav-links { display: flex; gap: 1.8rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--mist);
+      text-decoration: none; opacity: 0.7; transition: opacity 0.2s, color 0.2s;
+    }
+    .nav-links a:hover { opacity: 1; color: var(--gold2); }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative; min-height: 520px;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center; padding: 5rem 2rem 3rem;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0; z-index: 0;
+      background: linear-gradient(160deg, #082828 0%, #0D4A4A 50%, #0A3A3A 100%);
+    }
+    /* Subtle animated scales pattern */
+    .hero-bg::after {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: radial-gradient(ellipse at 20% 80%, rgba(200,153,26,0.07) 0%, transparent 60%),
+                        radial-gradient(ellipse at 80% 20%, rgba(200,153,26,0.05) 0%, transparent 60%);
+    }
+    /* Wave divider */
+    .hero-wave {
+      position: absolute; bottom: -2px; left: 0;
+      width: 100%; height: 90px; z-index: 1;
+    }
+    .hero-content { position: relative; z-index: 2; }
+
+    .hero-event {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 0.68rem; letter-spacing: 0.3em;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 1rem;
+      display: flex; align-items: center; gap: 0.8rem; justify-content: center;
+    }
+    .hero-event::before, .hero-event::after {
+      content: ''; width: 32px; height: 1px; background: var(--gold); opacity: 0.5;
+    }
+
+    .hero-team {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(3.5rem, 10vw, 7rem);
+      font-weight: 700; line-height: 0.9;
+      letter-spacing: 0.03em; text-transform: uppercase;
+      color: var(--white);
+    }
+    .hero-team em { font-style: normal; color: var(--gold2); }
+
+    .hero-desc {
+      margin-top: 1.2rem;
+      font-size: 0.95rem; color: rgba(213,232,232,0.72);
+      letter-spacing: 0.01em; line-height: 1.7;
+    }
+
+    .hero-pills {
+      display: flex; flex-wrap: wrap;
+      align-items: center; justify-content: center;
+      gap: 0.75rem; margin-top: 2rem;
+    }
+    .pill {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 0.7rem; letter-spacing: 0.08em;
+      color: var(--gold2);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 0.38rem 1rem;
+      background: rgba(200,153,26,0.07);
+    }
+
+    /* ── COUNTDOWN ── */
+    .countdown-bar {
+      position: relative; z-index: 2;
+      background: var(--card);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 1.2rem 2rem;
+      display: flex; align-items: center; justify-content: center; gap: 2.5rem;
+      flex-wrap: wrap;
+    }
+    .cd-unit { text-align: center; }
+    .cd-num {
+      font-family: 'Oswald', sans-serif;
+      font-size: 2rem; font-weight: 700;
+      color: var(--gold2); line-height: 1;
+    }
+    .cd-label {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 0.6rem; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--gray);
+      margin-top: 2px;
+    }
+    .cd-sep {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.6rem; color: var(--border);
+      align-self: flex-start; margin-top: 4px;
+    }
+
+    /* ── SECTION ── */
+    .section {
+      position: relative; z-index: 1;
+      max-width: 1080px; margin: 0 auto;
+      padding: 3rem 2rem;
+    }
+    .section-hd {
+      display: flex; align-items: center; gap: 1rem;
+      margin-bottom: 2rem;
+      padding-bottom: 0.9rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .section-tag {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 0.62rem; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--gold);
+      border: 1px solid rgba(200,153,26,0.4);
+      padding: 0.2rem 0.6rem; border-radius: 3px;
+    }
+    .section-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.7rem; font-weight: 700;
+      letter-spacing: 0.05em; text-transform: uppercase;
+      color: var(--white);
+    }
+
+    /* ── CHECKLIST ── */
+    .checklist { display: flex; flex-direction: column; gap: 0.65rem; }
+    .check-item {
+      display: flex; align-items: flex-start; gap: 1rem;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      padding: 1rem 1.2rem;
+      transition: border-color 0.2s;
+    }
+    .check-item:hover { border-color: rgba(200,153,26,0.55); }
+    .check-icon {
+      width: 32px; height: 32px; flex-shrink: 0;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+    }
+    .check-icon.done  { background: rgba(46,125,107,0.2); }
+    .check-icon.warn  { background: rgba(200,153,26,0.2); }
+    .check-icon.alert { background: rgba(200,49,26,0.2); }
+    .check-body { flex: 1; }
+    .check-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1rem; font-weight: 600;
+      letter-spacing: 0.05em; text-transform: uppercase;
+      color: var(--white); margin-bottom: 0.25rem;
+    }
+    .check-desc { font-size: 0.82rem; color: var(--gray); line-height: 1.6; }
+    .check-desc strong { color: var(--gold2); }
+    .badge-new {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 0.6rem; letter-spacing: 0.1em;
+      background: var(--red); color: var(--white);
+      padding: 0.15rem 0.5rem; border-radius: 3px;
+      margin-left: 0.5rem; vertical-align: middle;
+    }
+
+    /* ── INFO GRID ── */
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+    .info-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      padding: 1.2rem 1.4rem;
+    }
+    .info-card-label {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 0.6rem; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 0.4rem;
+    }
+    .info-card-value {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.25rem; font-weight: 600;
+      color: var(--white); letter-spacing: 0.04em;
+    }
+    .info-card-desc {
+      margin-top: 0.25rem;
+      font-size: 0.78rem; color: var(--gray); line-height: 1.55;
+    }
+
+    /* ── TIMELINE ── */
+    .timeline { display: flex; flex-direction: column; gap: 0; }
+    .tl-item {
+      display: grid;
+      grid-template-columns: 90px 1px 1fr;
+      gap: 0 1.2rem;
+      align-items: stretch;
+      min-height: 68px;
+    }
+    .tl-time {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 0.88rem; font-weight: 600;
+      color: var(--gold2);
+      text-align: right;
+      padding-top: 0.35rem;
+      padding-right: 0;
+    }
+    .tl-line {
+      display: flex; flex-direction: column; align-items: center;
+    }
+    .tl-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: var(--gold);
+      flex-shrink: 0; margin-top: 6px;
+      box-shadow: 0 0 0 3px rgba(200,153,26,0.2);
+    }
+    .tl-dot.highlight { background: var(--gold2); box-shadow: 0 0 0 4px rgba(232,184,48,0.25); }
+    .tl-bar { flex: 1; width: 1px; background: var(--border); }
+    .tl-item:last-child .tl-bar { display: none; }
+    .tl-content {
+      padding: 0.2rem 0 1.2rem 0;
+    }
+    .tl-name {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1rem; font-weight: 600;
+      letter-spacing: 0.04em; text-transform: uppercase;
+      color: var(--white);
+    }
+    .tl-meta {
+      font-size: 0.76rem; color: var(--gray);
+      margin-top: 0.2rem; line-height: 1.5;
+    }
+    .tl-meta strong { color: var(--gold); }
+
+    /* ── RULES GRID ── */
+    .rules-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1rem;
+    }
+    .rule-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      padding: 1.2rem 1.4rem;
+      display: flex; gap: 1rem; align-items: flex-start;
+    }
+    .rule-icon { font-size: 1.5rem; flex-shrink: 0; }
+    .rule-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.95rem; font-weight: 600;
+      letter-spacing: 0.05em; text-transform: uppercase;
+      color: var(--white); margin-bottom: 0.3rem;
+    }
+    .rule-body { font-size: 0.78rem; color: var(--gray); line-height: 1.6; }
+    .rule-body strong { color: var(--gold2); }
+    .rule-body .red { color: #f07060; }
+
+    /* ── TRANSPORT CARDS ── */
+    .bus-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 0.8rem;
+    }
+    .bus-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 7px; padding: 1rem 1.2rem;
+    }
+    .bus-origin {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 0.62rem; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--gray);
+      margin-bottom: 0.4rem;
+    }
+    .bus-nums { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0.6rem; }
+    .bus-num {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.95rem; font-weight: 700;
+      background: #1B4B8A; color: var(--white);
+      padding: 0.2rem 0.6rem; border-radius: 4px;
+    }
+    .bus-num.green { background: #1B7A3A; }
+    .bus-alight { font-size: 0.73rem; color: var(--gray); line-height: 1.5; }
+    .bus-alight strong { color: var(--cream); }
+
+    /* ── FACILITIES TABLE ── */
+    .fac-list { display: flex; flex-direction: column; gap: 0.6rem; }
+    .fac-row {
+      display: flex; align-items: flex-start; gap: 0.9rem;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 7px; padding: 0.9rem 1.2rem;
+      font-size: 0.82rem;
+    }
+    .fac-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 1px; }
+    .fac-place { color: var(--white); font-weight: 600; margin-bottom: 0.15rem; }
+    .fac-note { color: var(--gray); }
+
+    /* ── DIVIDER ── */
+    hr.div { border: none; border-top: 1px solid var(--border); margin: 0; }
+
+    /* ── SHUTTLE TABLE ── */
+    .shuttle-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+    }
+    .shuttle-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 7px; padding: 1.2rem 1.4rem;
+    }
+    .shuttle-type {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 0.62rem; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+    .shuttle-route {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.1rem; font-weight: 600;
+      color: var(--white); margin-bottom: 0.5rem;
+    }
+    .shuttle-times { font-size: 0.78rem; color: var(--gray); line-height: 1.7; }
+    .shuttle-times strong { color: var(--cream); }
+
+    /* ── SIGN-IN STEPS ── */
+    .steps { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .step {
+      flex: 1; min-width: 200px;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 7px; padding: 1.2rem 1.4rem;
+    }
+    .step-num {
+      font-family: 'Oswald', sans-serif;
+      font-size: 2rem; font-weight: 700; color: var(--gold);
+      line-height: 1; margin-bottom: 0.5rem;
+    }
+    .step-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.95rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.06em;
+      color: var(--white); margin-bottom: 0.3rem;
+    }
+    .step-body { font-size: 0.78rem; color: var(--gray); line-height: 1.6; }
+
+    /* ── CONTACTS ── */
+    .contact-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+    .contact-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 7px; padding: 1.1rem 1.3rem;
+      display: flex; gap: 0.8rem; align-items: center;
+    }
+    .contact-icon { font-size: 1.4rem; }
+    .contact-label {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 0.6rem; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 0.2rem;
+    }
+    .contact-val { font-size: 0.85rem; color: var(--white); font-weight: 500; }
+
+    /* ── FOOTER ── */
+    footer {
+      position: relative; z-index: 1;
+      text-align: center; padding: 2.5rem 2rem;
+      border-top: 1px solid var(--border);
+      font-family: 'Roboto Mono', monospace;
+      font-size: 0.68rem; letter-spacing: 0.1em; color: var(--gray);
+      background: rgba(8,32,32,0.7);
+    }
+    footer a { color: var(--gold); text-decoration: none; }
+    .footer-logo {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.4rem; font-weight: 700;
+      color: var(--gold2); letter-spacing: 0.06em;
+      margin-bottom: 0.6rem;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      nav { padding: 0 1rem; }
+      .nav-links { display: none; }
+      .shuttle-grid { grid-template-columns: 1fr; }
+      .steps { flex-direction: column; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">
+    🐉 ET DRAGON
+    <span class="sub">Stanley 2026</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#checklist">Checklist</a></li>
+    <li><a href="#timeline">Day Plan</a></li>
+    <li><a href="#rules">Race Rules</a></li>
+    <li><a href="#transport">Getting There</a></li>
+    <li><a href="#facilities">On-site</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <svg class="hero-wave" viewBox="0 0 1440 90" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path fill="#0D4A4A" d="M0,30 C360,80 720,0 1080,40 C1260,60 1380,35 1440,30 L1440,90 L0,90Z"/>
+    <path fill="#0A3535" d="M0,55 C400,100 800,20 1200,55 C1350,70 1420,55 1440,52 L1440,90 L0,90Z" opacity="0.7"/>
+  </svg>
+  <div class="hero-content">
+    <div class="hero-event">Shangri-La Stanley International Dragon Boat Championships</div>
+    <div class="hero-team">ET <em>Dragon</em></div>
+    <div class="hero-desc">Race Day · 19 June 2026 · Friday · 農曆五月初五<br>Stanley Main Beach, Hong Kong · 赤柱正灘</div>
+    <div class="hero-pills">
+      <span class="pill">📅 19 Jun 2026</span>
+      <span class="pill">📍 Stanley Main Beach</span>
+      <span class="pill">🏁 270m Course</span>
+      <span class="pill">🌐 dragonboat.org.hk</span>
+    </div>
+  </div>
+</section>
+
+<!-- COUNTDOWN -->
+<div class="countdown-bar" id="countdown-bar">
+  <div class="cd-unit"><div class="cd-num" id="cd-d">--</div><div class="cd-label">Days</div></div>
+  <div class="cd-sep">:</div>
+  <div class="cd-unit"><div class="cd-num" id="cd-h">--</div><div class="cd-label">Hours</div></div>
+  <div class="cd-sep">:</div>
+  <div class="cd-unit"><div class="cd-num" id="cd-m">--</div><div class="cd-label">Minutes</div></div>
+  <div class="cd-sep">:</div>
+  <div class="cd-unit"><div class="cd-num" id="cd-s">--</div><div class="cd-label">Seconds</div></div>
+</div>
+
+<!-- ── CHECKLIST ── -->
+<section class="section" id="checklist">
+  <div class="section-hd">
+    <span class="section-tag">Pre-Race</span>
+    <h2 class="section-title">ET Dragon Checklist</h2>
+  </div>
+  <div class="checklist">
+
+    <div class="check-item">
+      <div class="check-icon warn">🚩</div>
+      <div class="check-body">
+        <div class="check-title">Collect All Materials <span class="badge-new">DEADLINE PASSED</span></div>
+        <div class="check-desc">
+          Collect from <strong>Training Centre by 16 June</strong>: Junk flags (1), Speedboat flags (2), Shuttle Boat Tickets (200), Signal flag (1), Souvenir T-shirts. Present your <strong>Team Card</strong>. All teams also receive: 3× programmes &amp; 1× souvenir flag.
+        </div>
+      </div>
+    </div>
+
+    <div class="check-item">
+      <div class="check-icon warn">💳</div>
+      <div class="check-body">
+        <div class="check-title">Payment Deadline</div>
+        <div class="check-desc">
+          All cheque payments must be settled by <strong>18 June 2026</strong>. After that date only bank transfer or cash is accepted.
+        </div>
+      </div>
+    </div>
+
+    <div class="check-item">
+      <div class="check-icon done">🏊</div>
+      <div class="check-body">
+        <div class="check-title">Confirm All Paddlers Can Swim</div>
+        <div class="check-desc">Team Manager must verify all participants are able to swim before race day.</div>
+      </div>
+    </div>
+
+    <div class="check-item">
+      <div class="check-icon done">🪪</div>
+      <div class="check-body">
+        <div class="check-title">Steerer Registration</div>
+        <div class="check-desc">
+          Steersmen must be registered &amp; licensed by the organiser. Unregistered steersmen = <strong>disqualification</strong>. Official steersmen count as team members and are not grounds for protest.
+        </div>
+      </div>
+    </div>
+
+    <div class="check-item">
+      <div class="check-icon done">👕</div>
+      <div class="check-body">
+        <div class="check-title">Team Uniform Ready</div>
+        <div class="check-desc">Prepare matching team uniforms. Paddlers count: <strong>Min 12 · Max 18</strong> (plus drummer &amp; steerer — no restrictions on those roles).</div>
+      </div>
+    </div>
+
+    <div class="check-item">
+      <div class="check-icon done">📱</div>
+      <div class="check-body">
+        <div class="check-title">Download the Race App</div>
+        <div class="check-desc">
+          iOS: <strong>Stanley Dragonboat HK</strong> from App Store (remove old version first). All devices: <strong>www.sdbahk.com/mobileios2/home.html</strong>. Results &amp; live schedule announced here.
+        </div>
+      </div>
+    </div>
+
+    <div class="check-item">
+      <div class="check-icon done">🎭</div>
+      <div class="check-body">
+        <div class="check-title">Most Outstanding Outfit Contest (Optional)</div>
+        <div class="check-desc">
+          <strong>11:30 – 12:30</strong>. Prize presentation at 13:00. Champion wins free standard boat entry for 2027 warm-up / short course races. Organiser may randomly pick teams for 1-min stage performance.
+        </div>
+      </div>
+    </div>
+
+    <div class="check-item">
+      <div class="check-icon alert">🚫</div>
+      <div class="check-body">
+        <div class="check-title">Prohibited Items — Do NOT Bring</div>
+        <div class="check-desc">
+          <strong>Glass bottles</strong> · <strong>Drones</strong> (private drones banned at all race &amp; beach areas) · <strong>Alcohol during racing</strong> (drink after!) · Whistles in the boat. No smoking anywhere on venue. No unauthorised advertising — penalty HK$10,000+.
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="div" />
+
+<!-- ── DAY TIMELINE ── -->
+<section class="section" id="timeline">
+  <div class="section-hd">
+    <span class="section-tag">19 Jun 2026</span>
+    <h2 class="section-title">Race Day Timeline</h2>
+  </div>
+  <div class="timeline">
+
+    <div class="tl-item">
+      <div class="tl-time">07:00</div>
+      <div class="tl-line"><div class="tl-dot"></div><div class="tl-bar"></div></div>
+      <div class="tl-content">
+        <div class="tl-name">Shuttle Bus Begins</div>
+        <div class="tl-meta">Admiralty Centre (Drake St) → Stanley. Runs every 60 min until 14:00, then every 30 min until 20:00.</div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">07:30</div>
+      <div class="tl-line"><div class="tl-dot highlight"></div><div class="tl-bar"></div></div>
+      <div class="tl-content">
+        <div class="tl-name">🚨 Check-In Opens · Official Shuttle Boat Starts</div>
+        <div class="tl-meta"><strong>Arrive early.</strong> Sign-in counter is next to the information counter &amp; prize presentation stage. Official water shuttle runs 07:30–17:30 (no fixed schedule — follow crowd-control officials).</div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">08:00</div>
+      <div class="tl-line"><div class="tl-dot highlight"></div><div class="tl-bar"></div></div>
+      <div class="tl-content">
+        <div class="tl-name">🏁 Racing Begins</div>
+        <div class="tl-meta">Championships run until ~16:30. Course: <strong>270m</strong>. Two sets of boats (odd races = yellow plate, even = white plate). Sign in <strong>3 races before your race</strong>. Show Team Card.</div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">09:00</div>
+      <div class="tl-line"><div class="tl-dot"></div><div class="tl-bar"></div></div>
+      <div class="tl-content">
+        <div class="tl-name">Food Fair Opens</div>
+        <div class="tl-meta">Shangri-La Taste of HK Food Fair at <strong>HK Sea School Football Court</strong>. Free admission. Open 09:00–19:30. Local heroes &amp; global comfort food.</div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">11:30</div>
+      <div class="tl-line"><div class="tl-dot"></div><div class="tl-bar"></div></div>
+      <div class="tl-content">
+        <div class="tl-name">Most Outstanding Outfit Contest</div>
+        <div class="tl-meta">11:30–12:30 judging window. Prize ceremony at <strong>13:00–13:30</strong>.</div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">13:30</div>
+      <div class="tl-line"><div class="tl-dot"></div><div class="tl-bar"></div></div>
+      <div class="tl-content">
+        <div class="tl-name">Shuttle Ferry Begins (Aberdeen ⇄ Stanley)</div>
+        <div class="tl-meta">From Aberdeen: 13:30 / 15:20 / 17:10 / 19:00 · From Stanley: 14:25 / 16:15 / 18:05 / 20:00. Arrives at Stanley Blake Pier (~10 min walk to beach).</div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">~14:00</div>
+      <div class="tl-line"><div class="tl-dot"></div><div class="tl-bar"></div></div>
+      <div class="tl-content">
+        <div class="tl-name">Eye-Dotting Ceremony 點睛儀式</div>
+        <div class="tl-meta">Traditional ceremony begins. Refrain from drumming during guest speeches on stage.</div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">~16:30</div>
+      <div class="tl-line"><div class="tl-dot highlight"></div><div class="tl-bar"></div></div>
+      <div class="tl-content">
+        <div class="tl-name">🎉 Dragonbeat After Party Begins</div>
+        <div class="tl-meta">Stanley Main Beach. <strong>Free admission, limited capacity, first come first served.</strong> 3 hrs of DJ music: Yeti Out · HE.R Soundsystem · Cantomania. Runs until 19:30.</div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">17:30</div>
+      <div class="tl-line"><div class="tl-dot"></div><div class="tl-bar"></div></div>
+      <div class="tl-content">
+        <div class="tl-name">Official Water Shuttle Ends</div>
+        <div class="tl-meta">Last official shuttle at 17:30. Other beach entries close from 16:00 (single entry/exit from Training Centre stairwell on Hoi Fung Path).</div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">19:30</div>
+      <div class="tl-line"><div class="tl-dot"></div><div class="tl-bar"></div></div>
+      <div class="tl-content">
+        <div class="tl-name">Food Fair &amp; After Party Close</div>
+        <div class="tl-meta">Last shuttle bus from Stanley: 20:00. Last shuttle ferry from Stanley: 20:00.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="div" />
+
+<!-- ── RACE RULES ── -->
+<section class="section" id="rules">
+  <div class="section-hd">
+    <span class="section-tag">On the Water</span>
+    <h2 class="section-title">Race Rules for ET Dragon</h2>
+  </div>
+  <div class="rules-grid">
+
+    <div class="rule-card">
+      <div class="rule-icon">👥</div>
+      <div>
+        <div class="rule-title">Paddler Counts</div>
+        <div class="rule-body">
+          <strong>Min 12 · Max 18 paddlers</strong> per boat (+drummer +steerer, no gender restrictions on those). Mixed division: max 10 male, min 4 female paddlers. In adverse weather, organiser may reduce per-boat count.
+        </div>
+      </div>
+    </div>
+
+    <div class="rule-card">
+      <div class="rule-icon">⏱</div>
+      <div>
+        <div class="rule-title">Pre-Race Sign-In</div>
+        <div class="rule-body">
+          Report to sign-in counter <strong>3 races before your race</strong>. Tell officials your race number. Show Team Card. All paddlers must be at the boat marshalling area (lanes 1–13).
+        </div>
+      </div>
+    </div>
+
+    <div class="rule-card">
+      <div class="rule-icon">🚣</div>
+      <div>
+        <div class="rule-title">Boat Assignment</div>
+        <div class="rule-body">
+          Odd races (R1,3,5…) = <strong>Yellow Plate</strong> boats. Even races (R2,4,6…) = <strong>White Plate</strong> boats. Number plates on pontoon are always on your <strong>right side</strong>.
+        </div>
+      </div>
+    </div>
+
+    <div class="rule-card">
+      <div class="rule-icon">🥁</div>
+      <div>
+        <div class="rule-title">Start Procedure</div>
+        <div class="rule-body">
+          Drummer holds bow line &amp; sits facing forward (sitting rule applies). Paddles may stay in water at start. Steerer aligns <strong>white dot on stern to 1st handrail</strong>. Only release handle <strong>after</strong> starting horn. Pushing/pulling handle = FOUL.
+        </div>
+      </div>
+    </div>
+
+    <div class="rule-card">
+      <div class="rule-icon">🚦</div>
+      <div>
+        <div class="rule-title">Start Signal &amp; False Starts</div>
+        <div class="rule-body">
+          Signal: "Are you ready?" → "Ready" → <strong>Horn / GO</strong>. Two-start rule: only 1st false start recalled. 2nd start always goes — any team that jumps is <span class="red">disqualified at finish</span>.
+        </div>
+      </div>
+    </div>
+
+    <div class="rule-card">
+      <div class="rule-icon">🏁</div>
+      <div>
+        <div class="rule-title">Course &amp; Finish</div>
+        <div class="rule-body">
+          <strong>270m total</strong>. No re-race after first 50m. Stay in your lane — numbered buoys always on right. Timing taken from <strong>tip of dragon boat</strong> crossing virtual finish line (~1–5m before final buoys). Slow down after finish to avoid accidents.
+        </div>
+      </div>
+    </div>
+
+    <div class="rule-card">
+      <div class="rule-icon">🧰</div>
+      <div>
+        <div class="rule-title">Equipment</div>
+        <div class="rule-body">
+          All equipment provided by organiser. You may bring: own drumsticks, bailers, sponge. <span class="red">Whistles forbidden.</span> Only organiser's paddles allowed — spare paddles must stay in boat. Protect all equipment.
+        </div>
+      </div>
+    </div>
+
+    <div class="rule-card">
+      <div class="rule-icon">📋</div>
+      <div>
+        <div class="rule-title">Protests &amp; Appeals</div>
+        <div class="rule-body">
+          Protest: within 15 min, HK$500, white form. Appeal: 15 min, HK$1,000, yellow form. Video review: 15 min, HK$2,000. All must be signed by Team Manager + show Team Card. Fee refunded if successful.
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Division scoring note -->
+  <div style="margin-top:1.4rem; background:var(--card); border:1px solid var(--border); border-radius:7px; padding:1.2rem 1.4rem;">
+    <div style="font-family:'Oswald',sans-serif; font-size:1rem; font-weight:600; letter-spacing:0.05em; text-transform:uppercase; color:var(--white); margin-bottom:0.4rem;">Scoring System</div>
+    <div style="font-size:0.8rem; color:var(--gray); line-height:1.7;">
+      Each round is scored. <strong style="color:var(--gold2)">1st place earns an extra point.</strong> Final ranking = sum of points across all rounds. Ties broken by final round result.
+      Divisions going direct to finals (scored cumulatively): Mixed Open (excl. Heats) · Men's Plate · Ladies · Stanley MedMA Cup.
+      Divisions using flow chart: Mixed Open (Heats only) · Men's Cup · Shangri-La Mixed Corporate.
+    </div>
+  </div>
+</section>
+
+<hr class="div" />
+
+<!-- ── TRANSPORT ── -->
+<section class="section" id="transport">
+  <div class="section-hd">
+    <span class="section-tag">Getting There</span>
+    <h2 class="section-title">Transport to Stanley</h2>
+  </div>
+
+  <div style="font-size:0.82rem; color:var(--gray); margin-bottom:1.4rem; line-height:1.7;">
+    ✅ Use public transport &amp; reserve ample travel time. All parking meters along Stanley Beach Road &amp; Stanley Mound Road are <strong style="color:#f07060">suspended on race day</strong> — loading/unloading only.
+  </div>
+
+  <div class="bus-grid">
+    <div class="bus-card">
+      <div class="bus-origin">Central · Admiralty · Wan Chai</div>
+      <div class="bus-nums">
+        <span class="bus-num">6</span><span class="bus-num">6X</span><span class="bus-num">260</span>
+      </div>
+      <div class="bus-alight">Alight: <strong>Stanley Court</strong> or <strong>Stanley Plaza</strong></div>
+    </div>
+    <div class="bus-card">
+      <div class="bus-origin">Causeway Bay</div>
+      <div class="bus-nums">
+        <span class="bus-num">65</span><span class="bus-num green">40</span>
+      </div>
+      <div class="bus-alight">Alight: <strong>Stanley Court</strong> or <strong>Stanley Plaza</strong></div>
+    </div>
+    <div class="bus-card">
+      <div class="bus-origin">Eastern District</div>
+      <div class="bus-nums">
+        <span class="bus-num">14</span><span class="bus-num">314</span><span class="bus-num green">16X</span><span class="bus-num green">M</span>
+      </div>
+      <div class="bus-alight">Alight: <strong>Stanley Court</strong> or <strong>Stanley Plaza</strong></div>
+    </div>
+    <div class="bus-card">
+      <div class="bus-origin">Aberdeen 香港仔</div>
+      <div class="bus-nums">
+        <span class="bus-num">73</span><span class="bus-num green">52</span>
+      </div>
+      <div class="bus-alight">Alight: <strong>Stanley Court</strong> or <strong>Stanley Plaza</strong></div>
+    </div>
+    <div class="bus-card">
+      <div class="bus-origin">TST · Aberdeen</div>
+      <div class="bus-nums">
+        <span class="bus-num">973</span>
+      </div>
+      <div class="bus-alight">Alight: <strong>Stanley Court</strong> or <strong>Stanley Plaza</strong></div>
+    </div>
+  </div>
+
+  <div style="margin-top:0.6rem; font-size:0.74rem; color:#f07060; padding:0.6rem 0;">
+    ⚠️ Stanley Village Station may be temporarily suspended during busy periods.
+  </div>
+
+  <div class="shuttle-grid" style="margin-top:1.2rem;">
+    <div class="shuttle-card">
+      <div class="shuttle-type">🚌 Shuttle Bus — 2026 New</div>
+      <div class="shuttle-route">Admiralty ⇄ Stanley</div>
+      <div class="shuttle-times">
+        <strong>08:00–14:00</strong> every 60 min<br>
+        <strong>14:00–20:00</strong> every 30 min<br><br>
+        From Admiralty Centre (Drake St)<br>First: 08:00 · Last: 18:00<br><br>
+        From HK Sea School Bus Stop<br>First: 09:00 · Last: 20:00
+      </div>
+    </div>
+    <div class="shuttle-card">
+      <div class="shuttle-type">⛴ Shuttle Ferry — 2026 New</div>
+      <div class="shuttle-route">Aberdeen ⇄ Stanley</div>
+      <div class="shuttle-times">
+        <strong>From Aberdeen:</strong> 13:30 · 15:20 · 17:10 · 19:00<br>
+        <strong>From Stanley:</strong> 14:25 · 16:15 · 18:05 · 20:00<br><br>
+        Board at No. 4 Pier Stairs at Kwun Hoi Path (opp. Ocean Court).<br>
+        Arrives Stanley Blake Pier — ~10 min walk to beach.
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div" />
+
+<!-- ── FACILITIES ── -->
+<section class="section" id="facilities">
+  <div class="section-hd">
+    <span class="section-tag">On-Site</span>
+    <h2 class="section-title">Venue Facilities</h2>
+  </div>
+
+  <div class="info-grid" style="margin-bottom:1.8rem;">
+    <div class="info-card">
+      <div class="info-card-label">Race Course</div>
+      <div class="info-card-value">270 m</div>
+      <div class="info-card-desc">Total course length. Lanes 1–13. No re-race after first 50m.</div>
+    </div>
+    <div class="info-card">
+      <div class="info-card-label">Race Hours</div>
+      <div class="info-card-value">08:00–16:30</div>
+      <div class="info-card-desc">Schedule may run ahead or behind — always check the app for live timing.</div>
+    </div>
+    <div class="info-card">
+      <div class="info-card-label">Entries</div>
+      <div class="info-card-value">Entry 1 / 2 / 3</div>
+      <div class="info-card-desc">3 entrances. After-party: single entry via Training Centre stairwell (Hoi Fung Path) from 16:00.</div>
+    </div>
+    <div class="info-card">
+      <div class="info-card-label">Trophy Collection</div>
+      <div class="info-card-value">Team Manager Only</div>
+      <div class="info-card-desc">Present Team Card. 1st–3rd place: prize ceremony. Others: Information Counter. Unclaimed kept 1 week only.</div>
+    </div>
+  </div>
+
+  <!-- Water dispensers -->
+  <div class="section-hd" style="margin-top:0; border-top:1px solid var(--border); padding-top:1.5rem;">
+    <span class="section-tag">Hydration</span>
+    <h2 class="section-title" style="font-size:1.2rem;">Water Dispensers 飲水機</h2>
+  </div>
+  <div style="font-size:0.78rem; color:var(--gold); margin-bottom:0.8rem;">♻️ Bring your own bottle &amp; refill — reduce single-use plastic.</div>
+  <div class="fac-list" style="margin-bottom:1.8rem;">
+    <div class="fac-row"><div class="fac-icon">💧</div><div><div class="fac-place">Stanley Main Beach 赤柱正灘</div><div class="fac-note">Next to Changing Rooms 更衣室旁</div></div></div>
+    <div class="fac-row"><div class="fac-icon">💧</div><div><div class="fac-place">Main Beach Water Sports Centre 赤柱正灘水上活動中心</div><div class="fac-note">Next to First Aid Room 救護室旁</div></div></div>
+    <div class="fac-row"><div class="fac-icon">💧</div><div><div class="fac-place">Stanley Promenade 赤柱海濱長廊</div><div class="fac-note"></div></div></div>
+    <div class="fac-row"><div class="fac-icon">💧</div><div><div class="fac-place">Stanley Sports Centre 赤柱體育館</div><div class="fac-note">UG/F Changing Rooms, Play Room, Table Tennis area</div></div></div>
+    <div class="fac-row"><div class="fac-icon">💧</div><div><div class="fac-place">Stanley Dragon Boat Training Centre 赤柱龍舟訓練中心外 <span class="badge-new">2026 NEW</span></div><div class="fac-note"></div></div></div>
+  </div>
+
+  <!-- First Aid -->
+  <div class="section-hd" style="margin-top:0; border-top:1px solid var(--border); padding-top:1.5rem;">
+    <span class="section-tag">Safety</span>
+    <h2 class="section-title" style="font-size:1.2rem;">First-Aid Stations 救傷站</h2>
+  </div>
+  <div class="fac-list" style="margin-bottom:1.8rem;">
+    <div class="fac-row"><div class="fac-icon">🏥</div><div><div class="fac-place">St John Ambulance 聖約翰救護機構 · 07:30–20:00</div><div class="fac-note">1 Stanley Link Road · 2 Training Centre · 3 Pier</div></div></div>
+    <div class="fac-row"><div class="fac-icon">🏥</div><div><div class="fac-place">LCSD 康文署 · 08:00–18:00</div><div class="fac-note">4 Stanley Main Beach</div></div></div>
+  </div>
+
+  <!-- Showering -->
+  <div class="section-hd" style="margin-top:0; border-top:1px solid var(--border); padding-top:1.5rem;">
+    <span class="section-tag">Post-Race</span>
+    <h2 class="section-title" style="font-size:1.2rem;">Showering Facilities 沖洗設施</h2>
+  </div>
+  <div class="fac-list" style="margin-bottom:1.8rem;">
+    <div class="fac-row"><div class="fac-icon">🚿</div><div><div class="fac-place">Stanley Main Beach North 赤柱正灘泳灘北</div></div></div>
+    <div class="fac-row"><div class="fac-icon">🚿</div><div><div class="fac-place">Stanley Main Beach South 赤柱正灘泳灘南</div><div class="fac-note">Next to Water Sports Centre</div></div></div>
+    <div class="fac-row"><div class="fac-icon">🚿</div><div><div class="fac-place">Stanley Dragon Boat Training Centre 赤柱龍舟訓練中心</div></div></div>
+  </div>
+
+  <!-- Athlete Marquee Zones -->
+  <div class="section-hd" style="margin-top:0; border-top:1px solid var(--border); padding-top:1.5rem;">
+    <span class="section-tag">Team Areas</span>
+    <h2 class="section-title" style="font-size:1.2rem;">Athlete Marquee Zones 運動員帳篷</h2>
+  </div>
+  <div class="info-grid" style="margin-bottom:1.4rem;">
+    <div class="info-card" style="border-left:3px solid #E8B830;">
+      <div class="info-card-label">🟡 Yellow Zone</div>
+      <div class="info-card-value" style="font-size:1rem;">Stanley Link Rd / Water Sports Centre / Main Beach Left</div>
+    </div>
+    <div class="info-card" style="border-left:3px solid #C8311A;">
+      <div class="info-card-label">🔴 Red Zone</div>
+      <div class="info-card-value" style="font-size:1rem;">Main Beach Right</div>
+    </div>
+    <div class="info-card" style="border-left:3px solid #3A7AC8;">
+      <div class="info-card-label">🔵 Blue Zone</div>
+      <div class="info-card-value" style="font-size:1rem;">Hoi Fung Path</div>
+    </div>
+    <div class="info-card" style="border-left:3px solid #2E7D6B;">
+      <div class="info-card-label">🟢 Green Zone</div>
+      <div class="info-card-value" style="font-size:1rem;">HK Sea School Beach</div>
+    </div>
+  </div>
+  <div style="font-size:0.75rem; color:var(--gray);">Marquee banner size: <strong style="color:var(--cream)">300 × 20 cm</strong>. Team name &amp; logo only — no promotional content. Placed beneath marquee side panel.</div>
+</section>
+
+<hr class="div" />
+
+<!-- ── SIGN-IN STEPS ── -->
+<section class="section">
+  <div class="section-hd">
+    <span class="section-tag">Race Day</span>
+    <h2 class="section-title">Pre-Race Sign-In Process</h2>
+  </div>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">01</div>
+      <div class="step-title">Report to Sign-In Counter</div>
+      <div class="step-body">Go to the sign-in counter (next to information counter &amp; prize stage) <strong>3 races before your assigned race</strong>.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <div class="step-title">State Race Number</div>
+      <div class="step-body">Tell officials your race number. Present your <strong>Team Card</strong>. This is mandatory — no card, no start.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <div class="step-title">All Members to Marshalling Area</div>
+      <div class="step-body">All paddlers stand by at the boat marshalling area. Follow officials' instructions when boarding. U-turn only after clearing the shallow area (buoy-marked).</div>
+    </div>
+  </div>
+</section>
+
+<hr class="div" />
+
+<!-- ── JUNK RULES ── -->
+<section class="section">
+  <div class="section-hd">
+    <span class="section-tag">If Applicable</span>
+    <h2 class="section-title">Junk Usage Rules</h2>
+  </div>
+  <div class="rules-grid">
+    <div class="rule-card">
+      <div class="rule-icon">⚓</div>
+      <div>
+        <div class="rule-title">Collect by 16 June</div>
+        <div class="rule-body">All junk flags, speedboat flags, and shuttle boat tickets must be collected from the Training Centre by 16 June 2026.</div>
+      </div>
+    </div>
+    <div class="rule-card">
+      <div class="rule-icon">📏</div>
+      <div>
+        <div class="rule-title">Large Junks</div>
+        <div class="rule-body">Junks over <strong>70 ft</strong> should moor further from shore at deeper water positions.</div>
+      </div>
+    </div>
+    <div class="rule-card">
+      <div class="rule-icon">🧮</div>
+      <div>
+        <div class="rule-title">Head Count</div>
+        <div class="rule-body">Conduct a head count <strong>before and after</strong> boarding the junk. No exceptions.</div>
+      </div>
+    </div>
+    <div class="rule-card">
+      <div class="rule-icon">🚫</div>
+      <div>
+        <div class="rule-title">No Water Sports · No Alcohol During Race</div>
+        <div class="rule-body"><span class="red">All water sports prohibited — DO NOT SWIM.</span> Do not drink during racing. Save it for after! Drink/drug boating is a criminal offence (HK$25,000 fine + 3 years jail).</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div" />
+
+<!-- ── CONTACTS / STAY CONNECTED ── -->
+<section class="section">
+  <div class="section-hd">
+    <span class="section-tag">Info</span>
+    <h2 class="section-title">Stay Connected</h2>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-card">
+      <div class="contact-icon">🌐</div>
+      <div>
+        <div class="contact-label">Official Website</div>
+        <div class="contact-val"><a href="https://www.dragonboat.org.hk" target="_blank" style="color:var(--gold2); text-decoration:none;">dragonboat.org.hk</a></div>
+      </div>
+    </div>
+    <div class="contact-card">
+      <div class="contact-icon">📱</div>
+      <div>
+        <div class="contact-label">Live Results App</div>
+        <div class="contact-val">Stanley Dragonboat HK (iOS)</div>
+      </div>
+    </div>
+    <div class="contact-card">
+      <div class="contact-icon">💻</div>
+      <div>
+        <div class="contact-label">Mobile Web Results</div>
+        <div class="contact-val" style="font-size:0.75rem;"><a href="http://www.sdbahk.com/mobileios2/home.html" target="_blank" style="color:var(--gold2); text-decoration:none;">sdbahk.com/mobileios2</a></div>
+      </div>
+    </div>
+    <div class="contact-card">
+      <div class="contact-icon">📸</div>
+      <div>
+        <div class="contact-label">Instagram</div>
+        <div class="contact-val">@stanleydragonboat</div>
+      </div>
+    </div>
+  </div>
+  <div style="margin-top:1rem; background:var(--card); border:1px solid rgba(200,153,26,0.3); border-radius:7px; padding:1rem 1.4rem; font-size:0.78rem; color:var(--gray); line-height:1.7;">
+    📋 Today's Team Manager Meeting slides are uploaded to <a href="https://www.dragonboat.org.hk" target="_blank" style="color:var(--gold);">dragonboat.org.hk</a>. Race information will be uploaded to the app/web progressively on race day.
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">🐉 ET DRAGON</div>
+  <p>Shangri-La Stanley International Dragon Boat Championships 2026 · 19 June 2026 · Stanley Main Beach, HK</p>
+  <p style="margin-top:0.4rem; opacity:0.5;">All times HKT (UTC+8) · Schedule subject to change · Check the Stanley Dragonboat app for live updates</p>
+  <p style="margin-top:0.6rem;">Official info: <a href="https://www.dragonboat.org.hk">dragonboat.org.hk</a></p>
+</footer>
+
+<script>
+  // Countdown to 19 June 2026 08:00 HKT
+  const raceDate = new Date('2026-06-19T08:00:00+08:00');
+  function updateCD() {
+    const now = new Date();
+    const diff = raceDate - now;
+    if (diff <= 0) {
+      document.getElementById('countdown-bar').innerHTML =
+        '<div style="font-family:\'Oswald\',sans-serif;font-size:1.4rem;font-weight:700;color:var(--gold2);letter-spacing:0.05em;">🏁 RACE DAY IS HERE — GO ET DRAGON!</div>';
+      return;
+    }
+    const d = Math.floor(diff / 86400000);
+    const h = Math.floor((diff % 86400000) / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    document.getElementById('cd-d').textContent = String(d).padStart(2,'0');
+    document.getElementById('cd-h').textContent = String(h).padStart(2,'0');
+    document.getElementById('cd-m').textContent = String(m).padStart(2,'0');
+    document.getElementById('cd-s').textContent = String(s).padStart(2,'0');
+  }
+  updateCD();
+  setInterval(updateCD, 1000);
+</script>
+
+</body>
+</html>
